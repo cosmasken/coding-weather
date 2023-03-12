@@ -38,16 +38,6 @@ export const App = () => {
 
       const data = await res.json();
 
-      if (data.cod === 200) {
-        const forecastRes = await fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?q=${cityInput}&units=${unitSystem}&cnt=7&appid=${process.env.OPENWEATHER_API_KEY}`);
-        const forecastData = await forecastRes.json();
-        console.log(forecastData)
-        //setWeatherData({ ...currentWeatherData, forecast: forecastData.list });
-      } else {
-        console.log("City 777 found" )
-       // setWeatherData({ message: "City not found" });
-      }
-
 
       setWeatherData({ ...data });
       setCityInput("");
@@ -90,8 +80,8 @@ export const App = () => {
 
       </div>
       <ContentBox>
-        <Header>
-        <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem" ,width:'100%',flexDirection:'row' }}>
+
+<nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem" ,width:'100%',flexDirection:'row' }}>
   <div>
     <p onClick={() => selectText('Daily')} style={{ fontWeight: selectedText === 'Text 1' ? 'bold' : 'normal', margin: "0 1rem", cursor: "pointer" }}>
       Daily
@@ -103,13 +93,11 @@ export const App = () => {
   <div style={{ display: "flex", alignItems: "right" }}>
 
   <UnitSwitch onClick={changeSystem} unitSystem={unitSystem} />
-    <img src="./components/profile.jpeg" alt="Profile Image" style={{ borderRadius: "50%", width: "30px", height: "30px", marginLeft: "1rem" }} />
+    <img src="./images/profile.jpeg" alt="Profile Image" style={{ borderRadius: "50%", width: "30px", height: "30px", marginLeft: "1rem" }} />
  
            </div>
 </nav>
 
-
-        </Header>
         {/* <ForecastBox weatherData={weatherData} unitSystem={unitSystem} /> */}
         <MetricsBox weatherData={weatherData} unitSystem={unitSystem} />
         </ContentBox>

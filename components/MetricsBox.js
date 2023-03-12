@@ -21,28 +21,51 @@ export const MetricsBox = ({ weatherData, unitSystem }) => {
         unit={unitSystem == "metric" ? "m/s" : "m/h"}
       />
       {/* winds speed  */}
-      <WindSpeed
+
+      <Visibility
         title={"Wind speed"}
-        iconSrc={"/icons/wind.png"}
         metric={getWindSpeed(unitSystem, weatherData.wind.speed)}
-        unit={unitSystem == "metric" ? "m/s" : "m/h"}
+        unit={unitSystem == "metric" ? "m/s" : "km/h"}
       />
+     
       {/* sunrise & sunset */}
       <Copy
       title={"Sunrise & Sunset"}
         iconSrc={"/icons/sunrise.png"}
-        metric={getVisibility(unitSystem, weatherData.visibility)}
-        unit={unitSystem == "metric" ? "km" : "miles"}
+        iconSrc1={"/icons/sunset.png"}
+        metric={getTime(
+          unitSystem,
+          weatherData.sys.sunrise,
+          weatherData.timezone
+        )}
+        unit={getAMPM(
+          unitSystem,
+          weatherData.sys.sunrise,
+          weatherData.timezone
+        )}
+        metric1={getTime(
+          unitSystem,
+          weatherData.sys.sunset,
+          weatherData.timezone
+        )}
+        unit1={getAMPM(
+          unitSystem,
+          weatherData.sys.sunset,
+          weatherData.timezone
+        )}
       />
       {/* humidity */}
       
-      
+     
       <Visibility
         title={"Humidity"}
         metric={getVisibility(unitSystem, weatherData.visibility)}
         unit={"Awesome"}
       />
+
+
       {/* visibility */}
+    
      
       <Visibility
         title={"Visibility"}
@@ -51,7 +74,7 @@ export const MetricsBox = ({ weatherData, unitSystem }) => {
       />
       {/* air quality */}
       <Visibility
-        title={"Air qulaity"}
+        title={"Air qualaity"}
         metric={getVisibility(unitSystem, weatherData.visibility)}
         unit={'Unhealthy'}
       />

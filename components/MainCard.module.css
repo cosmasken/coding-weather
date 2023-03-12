@@ -16,3 +16,23 @@
 .temperature {
   font-size: 84px;
 }
+
+.sidebarcard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px; /* adjust as needed */
+  background-size: cover;
+}
+
+
+.date {
+  justify-content: center;
+  align-items: center;
+}
+.sidebarcard-text {
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+}
+

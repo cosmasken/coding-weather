@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ctoF } from "../services/converters";
 import styles from "./MainCard.module.css";
 import { DateAndTime } from "./DateAndTime";
+import profilePic from '../public/images/sky.jpeg';
 
 export const MainCard = ({
   city,
@@ -14,10 +15,7 @@ export const MainCard = ({
   return (
     <div className={styles.wrapper}>
       
-      {/* <h1 className={styles.location}>
-        {city}, {country}
-      </h1> */}
-      {/* <p className={styles.description}>{description}</p> */}
+    
       <Image
         width="300px"
         height="300px"
@@ -31,15 +29,27 @@ export const MainCard = ({
         °{unitSystem == "metric" ? "C" : "F"}
       </h1>
 
+      <div className="date">
+
       <DateAndTime weatherData={weatherData} unitSystem={unitSystem} />
+      
+      </div>
+
           
       <p>
-        Feels like{" "}
-        {unitSystem == "metric"
+        {description}
+        {/* Feels like{" "} */}
+        {/* {unitSystem == "metric"
           ? Math.round(weatherData.main.feels_like)
           : Math.round(ctoF(weatherData.main.feels_like))}
-        °{unitSystem == "metric" ? "C" : "F"}
+        °{unitSystem == "metric" ? "C" : "F"} */}
       </p>
+      <Image
+        src={profilePic}
+        alt="Picture of the aubackground"
+      width={'500px'}
+      />
+     
     </div>
   );
 };
