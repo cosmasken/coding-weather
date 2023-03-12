@@ -12,6 +12,7 @@ import { ErrorScreen } from "../components/ErrorScreen";
 
 
 import styles from "../styles/Home.module.css";
+import { ForecastBox } from "../components/ForecastBox";
 
 export const App = () => {
   const [cityInput, setCityInput] = useState("Nairobi");
@@ -34,12 +35,44 @@ export const App = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ cityInput }),
       });
+
       const data = await res.json();
+
+      if (data.cod === 200) {
+        const forecastRes = await fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?q=${cityInput}&units=${unitSystem}&cnt=7&appid=${process.env.OPENWEATHER_API_KEY}`);
+        const forecastData = await forecastRes.json();
+        console.log(forecastData)
+        //setWeatherData({ ...currentWeatherData, forecast: forecastData.list });
+      } else {
+        console.log("City 777 found" )
+       // setWeatherData({ message: "City not found" });
+      }
+
+
       setWeatherData({ ...data });
       setCityInput("");
     };
     getData();
   }, [triggerFetch]);
+
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=${unitSystem}&appid=YOUR_API_KEY`);
+  //     const currentWeatherData = await currentWeatherRes.json();
+  
+  //     if (currentWeatherData.cod === 200) {
+  //       const forecastRes = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityInput}&units=${unitSystem}&cnt=7&appid=YOUR_API_KEY`);
+  //       const forecastData = await forecastRes.json();
+  //       setWeatherData({ ...currentWeatherData, forecast: forecastData.list });
+  //     } else {
+  //       setWeatherData({ message: "City not found" });
+  //     }
+  
+  //     setCityInput("");
+  //   };
+  //   getData();
+  // }, [triggerFetch]);
+  
 
   const changeSystem = () =>
     unitSystem == "metric"
@@ -50,7 +83,7 @@ export const App = () => {
     <div className={styles.wrapper}>
       <div style={{flexDirection:'column'}}>
       <Search
-            placeHolder="Search a city..."
+            placeHolder="Search for places..."
             value={cityInput}
             onFocus={(e) => {
               e.target.value = "";
@@ -59,7 +92,7 @@ export const App = () => {
             onChange={(e) => setCityInput(e.target.value)}
             onKeyDown={(e) => {
               e.keyCode === 13 && setTriggerFetch(!triggerFetch);
-              e.target.placeholder = "Search a city...";
+              e.target.placeholder = "Search for places...";
             }}
           />
       <MainCard
@@ -71,10 +104,11 @@ export const App = () => {
         weatherData={weatherData}
        
       />
+
       </div>
       <ContentBox>
         <Header>
-        <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem" ,width:'100%' }}>
+        <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem" ,width:'100%',flexDirection:'row' }}>
   <div>
     <p onClick={() => selectText('Daily')} style={{ fontWeight: selectedText === 'Text 1' ? 'bold' : 'normal', margin: "0 1rem", cursor: "pointer" }}>
       Daily
@@ -93,6 +127,7 @@ export const App = () => {
 
 
         </Header>
+        <ForecastBox weatherData={weatherData} unitSystem={unitSystem} />
         <MetricsBox weatherData={weatherData} unitSystem={unitSystem} />
         </ContentBox>
     </div>
