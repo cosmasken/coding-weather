@@ -12,7 +12,7 @@ import { ErrorScreen } from "../components/ErrorScreen";
 
 
 import styles from "../styles/Home.module.css";
-import { ForecastBox } from "../components/ForecastBox";
+//import { ForecastBox } from "../components/ForecastBox";
 
 export const App = () => {
   const [cityInput, setCityInput] = useState("Nairobi");
@@ -110,7 +110,7 @@ export const App = () => {
 
 
         </Header>
-        <ForecastBox weatherData={weatherData} unitSystem={unitSystem} />
+        {/* <ForecastBox weatherData={weatherData} unitSystem={unitSystem} /> */}
         <MetricsBox weatherData={weatherData} unitSystem={unitSystem} />
         </ContentBox>
     </div>
