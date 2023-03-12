@@ -55,23 +55,6 @@ export const App = () => {
     getData();
   }, [triggerFetch]);
 
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=${unitSystem}&appid=YOUR_API_KEY`);
-  //     const currentWeatherData = await currentWeatherRes.json();
-  
-  //     if (currentWeatherData.cod === 200) {
-  //       const forecastRes = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityInput}&units=${unitSystem}&cnt=7&appid=YOUR_API_KEY`);
-  //       const forecastData = await forecastRes.json();
-  //       setWeatherData({ ...currentWeatherData, forecast: forecastData.list });
-  //     } else {
-  //       setWeatherData({ message: "City not found" });
-  //     }
-  
-  //     setCityInput("");
-  //   };
-  //   getData();
-  // }, [triggerFetch]);
   
 
   const changeSystem = () =>
