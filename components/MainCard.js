@@ -38,11 +38,6 @@ export const MainCard = ({
           
       <p>
         {description}
-        {/* Feels like{" "} */}
-        {/* {unitSystem == "metric"
-          ? Math.round(weatherData.main.feels_like)
-          : Math.round(ctoF(weatherData.main.feels_like))}
-        °{unitSystem == "metric" ? "C" : "F"} */}
       </p>
       <Image
         src={profilePic}

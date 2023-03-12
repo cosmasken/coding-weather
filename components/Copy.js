@@ -6,7 +6,7 @@ export const Copy = ({ title, iconSrc,iconSrc1, metric,metric1,unit1, unit }) =>
     <div className={styles.wrapper}>
     <p>Sunrise</p>
     <div className={styles.content}>
-      <Image width="100px" height="100px" src={iconSrc} alt="weatherIcon" />
+      <Image width="50px" height="50px" src={iconSrc} alt="weatherIcon" />
       <div>
         <h1>{metric}</h1>
         <p>{unit}</p>
@@ -14,7 +14,7 @@ export const Copy = ({ title, iconSrc,iconSrc1, metric,metric1,unit1, unit }) =>
     </div>
     <p>Sunset</p>
     <div className={styles.content}>
-      <Image width="100px" height="100px" src={iconSrc1} alt="weatherIcon" />
+      <Image width="50px" height="50px" src={iconSrc1} alt="weatherIcon" />
       <div>
         <h1>{metric1}</h1>
         <p>{unit1}</p>

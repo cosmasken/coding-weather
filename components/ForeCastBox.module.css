@@ -1,18 +1,18 @@
-.wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
+.list {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: auto;
 }
 
-@media only screen and (max-width: 600px) {
-  .wrapper {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media only screen and (max-width: 475px) {
-  .wrapper {
-    grid-template-columns: 1fr;
+@media only screen and (max-width: 768px) {
+  .list {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
   }
 }

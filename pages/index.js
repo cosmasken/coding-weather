@@ -2,17 +2,15 @@ import { useState, useEffect } from "react";
 
 import { MainCard } from "../components/MainCard";
 import { ContentBox } from "../components/ContentBox";
-import { Header } from "../components/Header";
-import { DateAndTime } from "../components/DateAndTime";
 import { Search } from "../components/Search";
 import { MetricsBox } from "../components/MetricsBox";
 import { UnitSwitch } from "../components/UnitSwitch";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { ErrorScreen } from "../components/ErrorScreen";
+import { ForeCastBox } from "../components/ForeCastBox";
 
 
 import styles from "../styles/Home.module.css";
-//import { ForecastBox } from "../components/ForecastBox";
 
 export const App = () => {
   const [cityInput, setCityInput] = useState("Nairobi");
@@ -97,6 +95,8 @@ export const App = () => {
  
            </div>
 </nav>
+
+<ForeCastBox/>
 
         {/* <ForecastBox weatherData={weatherData} unitSystem={unitSystem} /> */}
         <MetricsBox weatherData={weatherData} unitSystem={unitSystem} />
