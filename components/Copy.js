@@ -1,10 +1,13 @@
 import Image from "next/image";
 import styles from "./MetricsCard.module.css";
 
-export const Copy = ({ title, iconSrc,iconSrc1, metric,metric1,unit1, unit }) => {
+export const Copy = ({ suncard, iconSrc,iconSrc1, metric,metric1,unit1, unit }) => {
   return (
     <div className={styles.wrapper}>
-    <p>Sunrise</p>
+
+{suncard && 
+<>
+<p>Sunrise</p>
     <div className={styles.content}>
       <Image width="50px" height="50px" src={iconSrc} alt="weatherIcon" />
       <div>
@@ -20,6 +23,9 @@ export const Copy = ({ title, iconSrc,iconSrc1, metric,metric1,unit1, unit }) =>
         <p>{unit1}</p>
       </div>
     </div>
+</>}
+
+  
   </div>
   );
 };

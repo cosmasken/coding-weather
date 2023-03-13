@@ -26,9 +26,10 @@ export const MetricsBox = ({ weatherData, unitSystem }) => {
       />
      
       {/* sunrise & sunset */}
-      <Copy
+      <Visibility
+      suncard={true}
       title={"Sunrise & Sunset"}
-      iconSrc={`/icons/${weatherData.weather[0].icon}.svg`}
+      iconScrc2={`/icons/${weatherData.weather[0].icon}.svg`}
       iconSrc1={`/icons/${weatherData.weather[0].icon}.svg`}
         metric={getTime(
           unitSystem,
