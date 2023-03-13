@@ -1,17 +1,17 @@
 import Image from "next/image";
-import styles from "./MetricsCard.module.css";
+import styles from "./ForeCastCard.module.css";
 
-export const ForeCastCard = ({ title, iconSrc, metric, unit }) => {
+export const ForeCastCard = ({ day, iconSrc, high,low, unit }) => {
   return (
-    <div className={styles.wrapper}>
-      <p>{title}</p>
+      <div className={styles.daily}>
+        <div>{day}</div>
       <Image width="100px" height="100px" src={iconSrc} alt="weatherIcon" />
-      <div style={{flexDirection:'row'}}>
-         <div>
-          <h1>{metric}</h1>
-          <p>{unit}</p>
-        </div>
+      <div className={styles.row}>
+          <div className="tempText">{high}{unit} </div>
+          <div className="tempText">{low}{unit}</div>
+          </div>
+
       </div>
-    </div>
+   
   );
 };

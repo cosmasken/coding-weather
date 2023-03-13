@@ -15,3 +15,20 @@
     grid-template-columns: 1fr 2fr;
   }
 }
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.daily{
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.temperature{
+  flex-direction: row;
+}
+
+.tempText{
+  font-size: 12px;
+}

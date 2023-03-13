@@ -1,53 +1,34 @@
-import { degToCompass } from "../services/converters";
-import {
-  getTime,
-  getAMPM,
-  getVisibility,
-  getWindSpeed,
-} from "../services/helpers";
 import {ForeCastCard} from "./ForeCastCard"
 import styles from "./ForeCastBox.module.css";
-import { getWeekDay } from "../services/helpers";
+import { ctoF } from "../services/converters";
 
-export const ForeCastBox = ({ weatherData, unitSystem }) => {
+import { getForecastDay } from "../services/helpers";
+
+export const ForeCastBox = ({ forecastData, unitSystem }) => {
   return (
+  
     <div className={styles.list}>
-      <ForeCastCard
-        title={"Monday"}
-        iconSrc={"/icons/sunrise.png"}
-        metric={'25°C'}
-      />
+    {forecastData && forecastData.map((item) => (
+  <p key={item.dt}>
+    <ForeCastCard
+    day={item.main.dt}
+    iconSrc={`/icons/${item.weather[0].icon}.svg`}
+
+    high={unitSystem==="metric"
+    ? Math.round(item.main.temp_max)
+    : Math.round(ctoF(item.main.temp_max))
+  }
+  low={unitSystem==="metric"
+    ? Math.round(item.main.temp_min)
+    : Math.round(ctoF(item.main.temp_min))
+  }
+    unit={unitSystem == "metric" ? "°C" : "°F"}
+    />
+
+    </p>
+
+))}
      
-     <ForeCastCard
-        title={"Tuesday"}
-        iconSrc={"/icons/sunrise.png"}
-        metric={'25°C'}
-      />
-      <ForeCastCard
-        title={"Wedenesday"}
-        iconSrc={"/icons/sunrise.png"}
-        metric={'25°C'}
-      />
-      <ForeCastCard
-        title={"Thursday"}
-        iconSrc={"/icons/sunrise.png"}
-        metric={'25°C'}
-      />
-      <ForeCastCard
-        title={"Friday"}
-        iconSrc={"/icons/sunrise.png"}
-        metric={'25°C'}
-      />
-      <ForeCastCard
-        title={"Saturday"}
-        iconSrc={"/icons/sunrise.png"}
-        metric={'25°C'}
-      />
-      <ForeCastCard
-        title={"Sunday"}
-        iconSrc={"/icons/sunrise.png"}
-        metric={'25°C'}
-      />
-    </div>
+</div>
   );
 };

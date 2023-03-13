@@ -8,6 +8,7 @@ import { UnitSwitch } from "../components/UnitSwitch";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { ErrorScreen } from "../components/ErrorScreen";
 import { ForeCastBox } from "../components/ForeCastBox";
+import { ForeCastCard } from "../components/ForeCastCard";
 
 
 import styles from "../styles/Home.module.css";
@@ -16,6 +17,7 @@ export const App = () => {
   const [cityInput, setCityInput] = useState("Nairobi");
   const [triggerFetch, setTriggerFetch] = useState(true);
   const [weatherData, setWeatherData] = useState();
+  const [forecastData, setForecastData] = useState([]);
   const [unitSystem, setUnitSystem] = useState("metric");
   const [selectedView, setSelectedView] = useState("daily");
   
@@ -34,13 +36,33 @@ export const App = () => {
         body: JSON.stringify({ cityInput }),
       });
 
-      const data = await res.json();
+
+   const data = await res.json();
 
 
-      setWeatherData({ ...data });
+  setWeatherData({ ...data });
+
       setCityInput("");
     };
+
+    const getForecast = async () => {
+      const res = await fetch("api/forecast", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+
+   const forecast = await res.json();
+   
+console.log(forecast.list)
+console.log('fuck mananna')
+
+   setForecastData(forecast.list );
+
+    };
+
     getData();
+    getForecast();
   }, [triggerFetch]);
 
   
@@ -52,7 +74,7 @@ export const App = () => {
 
   return weatherData && !weatherData.message ? (
     <div className={styles.wrapper}>
-      <div style={{flexDirection:'column'}}>
+      <div style={{flexDirection:'column',justifyContent:'center'}}>
       <Search
             placeHolder="Search for places..."
             value={cityInput}
@@ -96,9 +118,10 @@ export const App = () => {
            </div>
 </nav>
 
-<ForeCastBox/>
 
-        {/* <ForecastBox weatherData={weatherData} unitSystem={unitSystem} /> */}
+<ForeCastBox forecastData={forecastData} unitSystem={unitSystem} />
+
+
         <MetricsBox weatherData={weatherData} unitSystem={unitSystem} />
         </ContentBox>
     </div>

@@ -41,7 +41,7 @@ export const MainCard = ({
       </p>
       <Image
         src={profilePic}
-        alt="Picture of the aubackground"
+        alt="Picture of the background"
       width={'500px'}
       />
      

@@ -39,3 +39,19 @@ export const getWeekDay = (weatherData) => {
     new Date((weatherData.dt + weatherData.timezone) * 1000).getUTCDay()
   ];
 };
+
+
+export const getForecastDay = (forecastdt,timezone) => {
+  const weekday = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return weekday[
+    new Date((forecastdt + timezone) * 1000).getUTCDay()
+  ];
+};

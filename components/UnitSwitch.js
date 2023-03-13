@@ -17,7 +17,7 @@ export const UnitSwitch = ({ onClick, unitSystem }) => {
         }`}
         onClick={onClick}
       >
-        F
+        °F
       </p>
     </div>
   );
