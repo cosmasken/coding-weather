@@ -57,7 +57,7 @@ export const MetricsBox = ({ weatherData, unitSystem }) => {
       <Visibility
         title={"Humidity"}
         metric={weatherData.main.humidity+"%"}
-        unit={"Awesome"}
+        unit={"Normal 🤙 "}
       />
 
 
@@ -67,13 +67,13 @@ export const MetricsBox = ({ weatherData, unitSystem }) => {
       <Visibility
         title={"Visibility"}
         metric={getVisibility(unitSystem, weatherData.visibility)+" km"}
-        unit={'Amazing'}
+        unit={'Average 😟'}
       />
       {/* air quality */}
       <Visibility
         title={"Air quality"}
         metric={getVisibility(unitSystem, weatherData.visibility)}
-        unit={'Unhealthy'}
+        unit={'Unhealthy 👎'}
       />
     </div>
   );
