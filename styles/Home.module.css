@@ -24,3 +24,11 @@
     border-radius: 0;
   }
 }
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.selected {
+  font-weight: bold;
+  font-size: large;
+}

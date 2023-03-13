@@ -19,9 +19,12 @@ export const App = () => {
   const [weatherData, setWeatherData] = useState();
   const [forecastData, setForecastData] = useState([]);
   const [unitSystem, setUnitSystem] = useState("metric");
-  const [selectedView, setSelectedView] = useState("daily");
-  
+  const [viewMode, setViewMode] = useState('daily'); // initialize state with default value
 
+  const handleViewModeChange = (newMode) => {
+    setViewMode(newMode);
+  
+  }
   const [selectedText, setSelectedText] = useState(null);
 
   const selectText = (text) => {
@@ -51,11 +54,8 @@ export const App = () => {
         headers: { "Content-Type": "application/json" },
       });
 
-
    const forecast = await res.json();
    
-console.log(forecast.list)
-console.log('fuck mananna')
 
    setForecastData(forecast.list );
 
@@ -102,14 +102,22 @@ console.log('fuck mananna')
       <ContentBox>
 
 <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem" ,width:'100%',flexDirection:'row' }}>
-  <div>
-    <p onClick={() => selectText('Daily')} style={{ fontWeight: selectedText === 'Text 1' ? 'bold' : 'normal', margin: "0 1rem", cursor: "pointer" }}>
-      Daily
-    </p>
-    <p onClick={() => selectText('Weekly')} style={{ fontWeight: selectedText === 'Text 2' ? 'bold' : 'normal', margin: "0 1rem", cursor: "pointer" }}>
-      Weekly
-    </p>
-  </div>
+
+<div className={styles.row}>
+      <div
+        className={viewMode === 'daily' ? styles.selected : ''}
+        onClick={() => handleViewModeChange('daily')}
+      >
+        Daily
+      </div>
+      <div
+        className={viewMode === 'weekly' ? styles.selected : ''}
+        onClick={() => handleViewModeChange('weekly')}
+      >
+        Weekly
+      </div>
+    </div>
+
   <div style={{ display: "flex", alignItems: "right" }}>
 
   <UnitSwitch onClick={changeSystem} unitSystem={unitSystem} />
