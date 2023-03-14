@@ -37,12 +37,13 @@ export const MainCard = ({
       <p>
         {description}
       </p>
-      <Image
-        src={profilePic}
-        alt="Picture of the background"
-      width={'500px'}
-      />
      
+     <div className={`${styles.sidebarcard} ${styles.sidebarcardBackground}`}>
+        <div className={styles.sidebarcardText}>
+          <p>{city}</p>
+        </div>
+      </div>
+
     </div>
   );
 };

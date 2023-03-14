@@ -21,8 +21,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px; /* adjust as needed */
+  height: 30%; /* adjust as needed */
   background-size: cover;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.sidebarcardBackground {
+  background-image: url('../public/images/sky.jpeg');
+}
+
+.sidebarcardText {
+  font-size: 2rem;
+  color: rgb(40, 39, 39);
+  text-align: center;
 }
 
 
