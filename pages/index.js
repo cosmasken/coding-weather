@@ -27,12 +27,7 @@ export const App = () => {
     setViewMode(newMode);
   
   }
-  //get coordinates
-  var getPosition = function (options) {
-    return new Promise(function (resolve, reject) {
-      navigator.geolocation.getCurrentPosition(resolve, reject, options);
-    });
-  }
+
   
   useEffect(() => {
     const getData = async () => {
@@ -79,8 +74,8 @@ console.log(forecast)
 
   return weatherData && !weatherData.message ? (
     <div className={styles.wrapper}>
-      <div style={{flexDirection:'column',justifyContent:'center'}}>
-        <div style={{flexDirection:'row',justifyContent:'center',width:'100%',alignContent:'center'}}>
+      <div style={{flexDirection:'column',justifyContent:'center',width:'100%'}}>
+        <div style={{display:'flex',justifyContent:'center'}}>
         <Search
             placeHolder="Search for places..."
             value={cityInput}
@@ -133,8 +128,6 @@ console.log(forecast)
  
            </div>
 </nav>
-
-
 
 {
   forecastData &&
