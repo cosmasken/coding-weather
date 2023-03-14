@@ -4,6 +4,7 @@ import styles from "./Visibility.module.css";
 export const Visibility = ({ suncard,title,iconSrc1,iconScrc2,metric1, metric, unit,unit1 }) => {
   return (
     <div className={styles.wrapper}>
+  
 
 {suncard ? (
         <>

@@ -18,7 +18,7 @@ body {
     rgba(137, 171, 245, 0.37) 0%,
     rgba(245, 247, 252, 1) 100.2%
   );
-  font-family: "Varela Round", sans-serif;
+  font-family: "Varela Round", sans-serif,'Inter';
 }
 .navbar {
   display: flex;

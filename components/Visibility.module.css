@@ -17,3 +17,14 @@
     grid-template-columns: 1fr 2fr;
   }
 }
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

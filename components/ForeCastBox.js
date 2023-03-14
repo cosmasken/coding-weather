@@ -4,12 +4,12 @@ import { ctoF } from "../services/converters";
 
 import { getForecastDay } from "../services/helpers";
 
-export const ForeCastBox = ({ forecastData, unitSystem }) => {
+export const ForeCastBox = ({ lat, long, forecastData, unitSystem }) => {
   return (
   
     <div className={styles.list}>
     {forecastData && forecastData.map((item) => (
-  <p key={item.dt}>
+  <div key={item.dt}>
     <ForeCastCard
     day={item.main.dt}
     iconSrc={`/icons/${item.weather[0].icon}.svg`}
@@ -25,7 +25,7 @@ export const ForeCastBox = ({ forecastData, unitSystem }) => {
     unit={unitSystem == "metric" ? "°C" : "°F"}
     />
 
-    </p>
+    </div>
 
 ))}
      

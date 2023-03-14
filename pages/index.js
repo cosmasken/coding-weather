@@ -13,30 +13,33 @@ import { ForeCastCard } from "../components/ForeCastCard";
 
 import styles from "../styles/Home.module.css";
 
+
 export const App = () => {
   const [cityInput, setCityInput] = useState("Nairobi");
   const [triggerFetch, setTriggerFetch] = useState(true);
   const [weatherData, setWeatherData] = useState();
+  const [longitude, setLongitude] = useState();
+  const [latitude, setLatitude] = useState();
   const [forecastData, setForecastData] = useState([]);
   const [unitSystem, setUnitSystem] = useState("metric");
-  const [viewMode, setViewMode] = useState('daily'); // initialize state with default value
-
+  const [viewMode, setViewMode] = useState('daily'); 
   const handleViewModeChange = (newMode) => {
     setViewMode(newMode);
   
   }
-  const [selectedText, setSelectedText] = useState(null);
-
-  const selectText = (text) => {
-    setSelectedText(text === selectedText ? null : text);
-  };
-
+  //get coordinates
+  var getPosition = function (options) {
+    return new Promise(function (resolve, reject) {
+      navigator.geolocation.getCurrentPosition(resolve, reject, options);
+    });
+  }
+  
   useEffect(() => {
     const getData = async () => {
       const res = await fetch("api/data", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ cityInput }),
+        body: JSON.stringify({ cityInput })
       });
 
 
@@ -52,10 +55,23 @@ export const App = () => {
       const res = await fetch("api/forecast", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+      
       });
 
    const forecast = await res.json();
    
+console.log(forecast)
+
+// getPosition()
+//   .then((position) => {
+//    // console.log(position.coords.latitude);
+//     setLatitude(position.coords.latitude);
+//     setLongitude(position.coords.longitude);
+//     console.log(latitude);
+//   })
+//   .catch((err) => {
+//     console.error(err.message);
+//   });
 
    setForecastData(forecast.list );
 
@@ -75,7 +91,8 @@ export const App = () => {
   return weatherData && !weatherData.message ? (
     <div className={styles.wrapper}>
       <div style={{flexDirection:'column',justifyContent:'center'}}>
-      <Search
+        <div style={{flexDirection:'row',justifyContent:'center',width:'100%',alignContent:'center'}}>
+        <Search
             placeHolder="Search for places..."
             value={cityInput}
             onFocus={(e) => {
@@ -88,6 +105,8 @@ export const App = () => {
               e.target.placeholder = "Search for places...";
             }}
           />
+        </div>
+ 
       <MainCard
         city={weatherData.name}
         country={weatherData.sys.country}
@@ -127,8 +146,11 @@ export const App = () => {
 </nav>
 
 
-<ForeCastBox forecastData={forecastData} unitSystem={unitSystem} />
 
+{
+  forecastData &&
+<ForeCastBox lat={latitude} long={longitude}forecastData={forecastData} unitSystem={unitSystem} />
+}
 
         <MetricsBox weatherData={weatherData} unitSystem={unitSystem} />
         </ContentBox>
