@@ -62,17 +62,6 @@ export const App = () => {
    
 console.log(forecast)
 
-// getPosition()
-//   .then((position) => {
-//    // console.log(position.coords.latitude);
-//     setLatitude(position.coords.latitude);
-//     setLongitude(position.coords.longitude);
-//     console.log(latitude);
-//   })
-//   .catch((err) => {
-//     console.error(err.message);
-//   });
-
    setForecastData(forecast.list );
 
     };
