@@ -29,11 +29,9 @@ export const MainCard = ({
         °{unitSystem == "metric" ? "C" : "F"}
       </h1>
 
-      <div className="date">
 
       <DateAndTime weatherData={weatherData} unitSystem={unitSystem} />
-      
-      </div>
+  
 
           
       <p>
