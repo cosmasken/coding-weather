@@ -11,7 +11,10 @@ export const ForeCastBox = ({ lat, long, forecastData, unitSystem }) => {
     {forecastData && forecastData.map((item) => (
   <div key={item.dt}>
     <ForeCastCard
-    day={item.main.dt}
+   // day={item.main.dt}
+   day={new Date(item.dt * 1000).toLocaleDateString("en", {
+    weekday: "long",
+  })}
     iconSrc={`/icons/${item.weather[0].icon}.svg`}
 
     high={unitSystem==="metric"
